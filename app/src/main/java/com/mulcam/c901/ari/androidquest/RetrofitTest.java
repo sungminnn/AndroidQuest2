@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.*;
 
 import retrofit2.Call;
@@ -66,9 +71,10 @@ public class RetrofitTest extends Activity {
                         call.enqueue(new Callback<HashMap<String, Object>>() {
                             @Override
                             public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
-                                HashMap<String, Object> hash = response.body();
-//                                    HashMap<String, Object> hash = (HashMap<String, Object>)(repo.getHash().get("list0"));
-                                    retrofit_main.setText(String.valueOf(hash.get("list0")));
+                                Map<String, Object> hash = response.body();
+                                Map<String, Object> hash2 = (LinkedTreeMap<String, Object>)hash.get("list1");
+                                List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
+                                retrofit_main.setText(String.valueOf(hash3));
                             }
 
                             @Override
