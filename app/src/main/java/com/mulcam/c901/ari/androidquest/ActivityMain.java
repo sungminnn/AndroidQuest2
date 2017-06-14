@@ -73,7 +73,7 @@ public class ActivityMain extends Activity{
 
 
                         adapter = new BoardAdapter(ActivityMain.this, R.layout.board, hash3);
-                        main_lv = (ListView) findViewById(R.id.listview);
+                        main_lv = (ListView) findViewById(R.id.main_lv);
                         main_lv.setAdapter(adapter);
                     }
 
