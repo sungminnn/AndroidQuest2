@@ -2,58 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/board_title"-->
-    <!--android:text="title"/>-->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:maxLines="1"
         android:ellipsize="marquee"
         android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
-        android:id="@+id/board_title"/>
-
+        android:id="@+id/viewboard_title"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="right"
-        android:textSize="15sp">
+        android:layout_gravity="right">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:hint="작성자 "
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="나다"
-            android:id="@+id/board_writeuser"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint=" | "
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:hint="2017.00.00"
             android:inputType="date"
-            android:id="@+id/board_writedate"/>
+            android:id="@+id/viewboard_writedate"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:hint=" | 조회수 "
-            android:id="@+id/board_read"/>
+            android:id="@+id/viewboard_read"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:hint="00"
-            android:id="@+id/board_readcount"/>
+            android:id="@+id/viewboard_readcount"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+
+
 </LinearLayout>
