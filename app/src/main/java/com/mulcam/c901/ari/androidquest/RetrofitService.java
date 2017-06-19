@@ -15,26 +15,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 class RetrofitService {
-    private RetrofitInterface service;
-    private OkHttpClient okhttp;
+    private static RetrofitInterface service;
+    private static OkHttpClient okhttp;
     private RetrofitService()
     {
 
     }
     public static RetrofitInterface getInstance()
     {
-        if(this.service == null)
+        if(service == null)
         {
             okhttp = setInterceptor();
             Retrofit client = new Retrofit.Builder().baseUrl("http://10.0.3.2:8080/Quest/")
                                     .addConverterFactory(GsonConverterFactory.create())
                                     .client(okhttp)
                                     .build();
-            this.service = client.create(RetrofitInterface.class);
+            service = client.create(RetrofitInterface.class);
         }
         return service;
     }
-    private OkHttpClient setInterceptor()
+    private static OkHttpClient setInterceptor()
         {
             OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
                 @Override

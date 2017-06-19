@@ -29,7 +29,8 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
             this.list = new ArrayList<>();
         else
             this.list = list;
-        Log.i("adapter", "생성자");
+        Log.i("boardApter", "생성자");
+
 
     }
 
@@ -53,7 +54,7 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final TextView board_title;
+        TextView board_title;
         TextView writeuser;
         TextView board_writedate;
         TextView board_readcount;
@@ -66,12 +67,11 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
         }
         board_title = (TextView)convertView.findViewById(R.id.board_title);
         board_title.setText((String)list.get(position).get("title"));
-        Log.i("adapter", "board_title");
+//        Log.i("Adapter", "page_viewboard");
         writeuser = (TextView) convertView.findViewById(R.id.board_writeuser);
         writeuser.setText((String)list.get(position).get("nickname"));
         board_writedate = (TextView) convertView.findViewById(R.id.board_writedate);
         board_writedate.setText((String)list.get(position).get("date"));
-//        Log.i("boardAdapter", (String)list.get(position).get("readCount"));
         board_readcount = (TextView) convertView.findViewById(R.id.board_readcount);
         board_readcount.setText(String.format("%.0f", (double)list.get(position).get("readCount")));
 

@@ -1,68 +1,63 @@
 package com.mulcam.c901.ari.androidquest;
 
-
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 /**
- * Created by student on 2017-06-16.
+ * Created by student on 2017-06-19.
  */
 
-public class TodoBoardFragment extends Fragment {
-    private BoardAdapter adapter;
-    private ListView main_lv;
+public class ViewBoardFragement extends Fragment {
+    private ViewBoardAdapter adapter;
+    private OkHttpClient okhttp;
     private View view;
-    private ViewBoardFragement viewBoard;
 
+    //page_viewBoard
+    private Button applyuser_btn;
+    private Button bookmark_btn;
+    private Button police_btn;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(getActivity(), "viewBoard", Toast.LENGTH_SHORT).show();
+        Log.i("Fragment", "viwBoard");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.boardlistview, container, false);
-        main_lv = (ListView)view.findViewById(R.id.main_lv);
-        setList();
+        view = inflater.inflate(R.layout.page_viewboard, container, false);
 
-        viewBoard = new ViewBoardFragement();
-        main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.main_lv, viewBoard).commit();
-
-            }
-        });
+        applyuser_btn = (Button)view.findViewById(R.id.viewboard_applyuser_btn);
+        bookmark_btn = (Button)view.findViewById(R.id.viewboard_bookmark_btn);
+        police_btn = (Button)view.findViewById(R.id.viewboard_police_btn);
+        setViewBoard();
 
         return view;
     }
 
-    private void setList()
+    private void setViewBoard()
     {
-        adapter = new BoardAdapter(getActivity(), R.layout.list_board, new ArrayList<Map<String, Object> >());
-        main_lv.setAdapter(adapter);
+
         new AsyncTask<Nullable, Nullable, Nullable>()
         {
 
@@ -83,7 +78,7 @@ public class TodoBoardFragment extends Fragment {
             @Override
             protected Nullable doInBackground(Nullable... params) {
                 RetrofitInterface service = RetrofitService.getInstance();
-                Call<HashMap<String, Object>> call = service.repo();
+                Call<HashMap<String, Object>> call = service.getBoard();
                 call.enqueue(new Callback<HashMap<String,Object>>() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
@@ -103,3 +98,4 @@ public class TodoBoardFragment extends Fragment {
         }.execute();
     }
 }
+

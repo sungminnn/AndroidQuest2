@@ -14,4 +14,6 @@ public interface RetrofitInterface {
         Call<HashMap<String, Object>> repo();
         @PUT("m_session.do")
         Call<HashMap<String, Object>> session();
+        @PUT("m_getBoard.do")
+        Call<HashMap<String, Object>> getBoard();
 }
