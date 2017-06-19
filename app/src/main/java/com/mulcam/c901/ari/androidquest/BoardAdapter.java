@@ -54,7 +54,7 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView board_title;
+        final TextView board_title;
         TextView writeuser;
         TextView board_writedate;
         TextView board_readcount;
@@ -68,6 +68,7 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
         board_title = (TextView)convertView.findViewById(R.id.board_title);
         board_title.setText((String)list.get(position).get("title"));
 //        Log.i("Adapter", "page_viewboard");
+
         writeuser = (TextView) convertView.findViewById(R.id.board_writeuser);
         writeuser.setText((String)list.get(position).get("nickname"));
         board_writedate = (TextView) convertView.findViewById(R.id.board_writedate);

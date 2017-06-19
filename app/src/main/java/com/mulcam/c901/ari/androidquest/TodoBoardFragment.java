@@ -2,10 +2,10 @@ package com.mulcam.c901.ari.androidquest;
 
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,27 +34,33 @@ public class TodoBoardFragment extends Fragment {
     private View view;
     private ViewBoardFragement viewBoard;
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                parent.getItemAtPosition(position);
+                ((HashMap<String, Object>)parent.getItemAtPosition(position)).get("boardNo");
+//                --> 보내서 그받은걸 viewBoard양식에 맞춘다음 main_list? 거기에 프레그먼트 매니저를통해서 replace
+//                Toast.makeText(getActivity(), "아이템 클릭", Toast.LENGTH_SHORT).show();
+                Log.d("todoFrag", "리스트뷰 클릭클릭");
+            }
+        });
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.boardlistview, container, false);
-        main_lv = (ListView)view.findViewById(R.id.main_lv);
+        main_lv = (ListView) view.findViewById(R.id.main_lv);
         setList();
 
-        viewBoard = new ViewBoardFragement();
-        main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.main_lv, viewBoard).commit();
+//        viewBoard = new ViewBoardFragement();
+//        Log.i("todoFrag", "플래그 생성");
 
-            }
-        });
+
 
         return view;
     }
@@ -90,6 +96,7 @@ public class TodoBoardFragment extends Fragment {
                         Map<String, Object> hash = response.body();
                         Map<String, Object> hash2 = (LinkedTreeMap<String, Object>)hash.get("list1");
                         List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
+                        Log.d("todo",String.valueOf(hash3));
                         adapter.addAll(hash3);
                     }
 

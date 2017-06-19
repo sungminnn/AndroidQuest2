@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
 
@@ -27,7 +26,6 @@ import retrofit2.Response;
  */
 
 public class ViewBoardFragement extends Fragment {
-    private ViewBoardAdapter adapter;
     private OkHttpClient okhttp;
     private View view;
 
@@ -38,8 +36,6 @@ public class ViewBoardFragement extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getActivity(), "viewBoard", Toast.LENGTH_SHORT).show();
-        Log.i("Fragment", "viwBoard");
     }
 
     @Nullable
@@ -50,12 +46,15 @@ public class ViewBoardFragement extends Fragment {
         applyuser_btn = (Button)view.findViewById(R.id.viewboard_applyuser_btn);
         bookmark_btn = (Button)view.findViewById(R.id.viewboard_bookmark_btn);
         police_btn = (Button)view.findViewById(R.id.viewboard_police_btn);
-        setViewBoard();
+        setList();
 
         return view;
     }
-
-    private void setViewBoard()
+    public void setView_main_lv()
+    {
+        Log.d("asd","asd");
+    }
+    private void setList()
     {
 
         new AsyncTask<Nullable, Nullable, Nullable>()
@@ -78,14 +77,14 @@ public class ViewBoardFragement extends Fragment {
             @Override
             protected Nullable doInBackground(Nullable... params) {
                 RetrofitInterface service = RetrofitService.getInstance();
-                Call<HashMap<String, Object>> call = service.getBoard();
+                Call<HashMap<String, Object>> call = service.repo();
                 call.enqueue(new Callback<HashMap<String,Object>>() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
                         Map<String, Object> hash = response.body();
                         Map<String, Object> hash2 = (LinkedTreeMap<String, Object>)hash.get("list1");
                         List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
-                        adapter.addAll(hash3);
+//                        adapter.addAll(hash3);
                     }
 
                     @Override
