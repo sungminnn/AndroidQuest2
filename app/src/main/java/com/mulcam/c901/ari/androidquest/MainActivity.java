@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         todo_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
                 Log.i("main","해주세요게시판 in");
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.main_view, todoBoard).commit();
