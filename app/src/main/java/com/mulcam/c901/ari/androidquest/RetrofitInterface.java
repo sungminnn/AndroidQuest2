@@ -10,6 +10,7 @@ import retrofit2.http.PUT;
  */
 
 public interface RetrofitInterface {
-        @PUT("android.do")
+        @PUT("m_android.do")
         Call<HashMap<String, Object>> repo();
+
 }
