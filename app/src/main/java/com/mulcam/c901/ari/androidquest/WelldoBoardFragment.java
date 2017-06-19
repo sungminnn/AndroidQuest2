@@ -38,7 +38,6 @@ public class WelldoBoardFragment extends Fragment {
     private ListView main_lv;
     private OkHttpClient okhttp;
     private View view;
-    private int flag;
 
 
     @Override

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.internal.LinkedTreeMap;
@@ -38,7 +39,6 @@ public class TodoBoardFragment extends Fragment {
     private ListView main_lv;
     private OkHttpClient okhttp;
     private View view;
-    private int flag;
 
 
     @Override
@@ -54,7 +54,11 @@ public class TodoBoardFragment extends Fragment {
         view = inflater.inflate(R.layout.boardlistview, container, false);
         main_lv = (ListView)view.findViewById(R.id.main_lv);
         setList();
+
+
         return view;
+
+
     }
 
     private void setList()

@@ -54,6 +54,10 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final TextView board_title;
+        TextView writeuser;
+        TextView board_writedate;
+        TextView board_readcount;
+
         if(convertView == null)
         {
             LayoutInflater inflater
@@ -63,6 +67,13 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
         board_title = (TextView)convertView.findViewById(R.id.board_title);
         board_title.setText((String)list.get(position).get("title"));
         Log.i("adapter", "board_title");
+        writeuser = (TextView) convertView.findViewById(R.id.board_writeuser);
+        writeuser.setText((String)list.get(position).get("nickname"));
+        board_writedate = (TextView) convertView.findViewById(R.id.board_writedate);
+        board_writedate.setText((String)list.get(position).get("date"));
+//        Log.i("boardAdapter", (String)list.get(position).get("readCount"));
+//        board_readcount = (TextView) convertView.findViewById(R.id.board_readcount);
+//        board_readcount.setText(String.valueOf((int)list.get(position).get("readCount")));
 
 
         return convertView;

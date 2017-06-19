@@ -28,7 +28,8 @@ public class MainActivity extends FragmentActivity{
     private Button todo_btn;
     private Button welldo_btn;
 
-    private TodoBoardFragment listBoard;
+    private TodoBoardFragment todoBoard;
+    private WelldoBoardFragment welldoBoard;
 
     private BoardAdapter adapter;
     private ListView main_lv;
@@ -41,9 +42,9 @@ public class MainActivity extends FragmentActivity{
         todo_btn = (Button) findViewById(R.id.main_todo_btn);
         welldo_btn = (Button) findViewById(R.id.main_welldo_btn);
         main_view = (LinearLayout) findViewById(R.id.main_view);
-//        main_lv = (ListView) findViewById(R.id.main_lv) ;
 
-        listBoard = new TodoBoardFragment();
+        todoBoard = new TodoBoardFragment();
+        welldoBoard = new WelldoBoardFragment();
 
 
         todo_btn.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +53,24 @@ public class MainActivity extends FragmentActivity{
                 Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
                 Log.i("main","해주세요게시판 in");
 
+
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.main_view, listBoard).commit();
+                fm.beginTransaction().replace(R.id.main_view, todoBoard).commit();
 
 
             }
         });
 
+        welldo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, " 잘해요 게시판에 들어옴", Toast.LENGTH_SHORT).show();
+                Log.i("main", "잘해요 게시판 in");
+
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.main_view, welldoBoard).commit();
+            }
+        });
     }
 
 
