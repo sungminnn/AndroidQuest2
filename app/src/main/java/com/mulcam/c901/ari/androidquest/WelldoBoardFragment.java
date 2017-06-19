@@ -86,7 +86,8 @@ public class WelldoBoardFragment extends Fragment {
 
             @Override
             protected Nullable doInBackground(Nullable... params) {
-                RetrofitInterface service = client.create(RetrofitInterface.class);
+//                RetrofitInterface service = client.create(RetrofitInterface.class);
+                RetrofitInterface service = RetrofitService.getInstance();
                 Call<HashMap<String, Object>> call = service.repo();
                 call.enqueue(new Callback<HashMap<String,Object>>() {
                     @Override
