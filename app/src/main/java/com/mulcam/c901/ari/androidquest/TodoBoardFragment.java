@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.internal.LinkedTreeMap;
@@ -54,6 +53,15 @@ public class TodoBoardFragment extends Fragment {
         view = inflater.inflate(R.layout.boardlistview, container, false);
         main_lv = (ListView)view.findViewById(R.id.main_lv);
         setList();
+
+//        main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                FragmentManager fm = getFragmentManager();
+//                fm.beginTransaction().replace(main_lv, R.layout.viewboard).commit();
+//
+//            }
+//        });
 
 
         return view;

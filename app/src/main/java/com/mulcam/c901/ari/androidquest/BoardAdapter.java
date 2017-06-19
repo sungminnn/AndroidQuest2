@@ -72,8 +72,9 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
         board_writedate = (TextView) convertView.findViewById(R.id.board_writedate);
         board_writedate.setText((String)list.get(position).get("date"));
 //        Log.i("boardAdapter", (String)list.get(position).get("readCount"));
-//        board_readcount = (TextView) convertView.findViewById(R.id.board_readcount);
-//        board_readcount.setText(String.valueOf((int)list.get(position).get("readCount")));
+        board_readcount = (TextView) convertView.findViewById(R.id.board_readcount);
+        board_readcount.setText(String.format("%.0f", (double)list.get(position).get("readCount")));
+
 
 
         return convertView;
