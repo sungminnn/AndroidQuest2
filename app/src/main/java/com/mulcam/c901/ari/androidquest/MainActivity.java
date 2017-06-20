@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * Created by Jin on 2017-06-14.
@@ -25,11 +26,14 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
     private Button todo_btn;
     private Button welldo_btn;
+    private ImageView write_btn;
     private int boardNo;
+
 
     private TodoBoardFragment todoBoard;
     private WelldoBoardFragment welldoBoard;
     private ViewBoardFragement viewBoard;
+    private WriteBoardFragment writeboard;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +63,13 @@ public class MainActivity extends AppCompatActivity
 
         todo_btn = (Button) findViewById(R.id.main_todo_btn);
         welldo_btn = (Button) findViewById(R.id.main_welldo_btn);
+        write_btn = (ImageView) findViewById(R.id.main_write_btn);
 
         todoBoard = new TodoBoardFragment();
         welldoBoard = new WelldoBoardFragment();
         viewBoard = new ViewBoardFragement();
+        writeboard = new WriteBoardFragment();
+
 
 
         todo_btn.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +92,15 @@ public class MainActivity extends AppCompatActivity
                 fm.beginTransaction().replace(R.id.main_view, welldoBoard).commit();
             }
         });
+
+        write_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.main_view, writeboard).commit();
+            }
+        });
+
 
     }
 
