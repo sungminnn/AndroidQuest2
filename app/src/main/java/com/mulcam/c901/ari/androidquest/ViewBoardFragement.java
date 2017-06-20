@@ -1,5 +1,6 @@
 package com.mulcam.c901.ari.androidquest;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,11 +50,49 @@ public class ViewBoardFragement extends Fragment {
         applyuser_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                view = ((MainActivity)getActivity()).getLayoutInflater().inflate(R.layout.dialog_applyuser,null);
+
+                TextView boardNo_edit = (TextView) view.findViewById(R.id.apply_boardNo_edit);
+                boardNo_edit.setText(String.format("%.0f",boardList.get("boardNo")));
+
+                final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                        .setView(view)
+                        .create();
+                dialog.show();
+                Button btn_cancel = (Button) view.findViewById(R.id.apply_btn_cancel);
+                Button btn_ok = (Button) view.findViewById(R.id.apply_btn_ok);
+                //신청하기 취소
+                btn_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                btn_ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
 
             }
         });
 
-        //
+        //신고하기
+        police_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //즐겨찾기
+        bookmark_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
@@ -110,7 +149,7 @@ public class ViewBoardFragement extends Fragment {
                 Log.d("viewBoard"," onResponse title "+String.valueOf(boardList.get("title")));
                 Log.d("viewBoard"," onResponse readcount "+String.valueOf(boardList.get("readCount")));
                 readcount.setText(String.format("%.0f",boardList.get("readCount")) );
-                people.setText(String.format("%.0f",boardList.get("people")));
+                people.setText(String.format("%.0f",boardList.get("people"))+"명");
 
                 title.setText(String.valueOf(boardList.get("title")));
                 writedate.setText(String.valueOf(boardList.get("date")));
