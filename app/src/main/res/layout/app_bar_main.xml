@@ -55,8 +55,9 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_toRightOf="@+id/main_search_btn"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/pencil"
+                android:src="@drawable/sign_in"
                 android:id="@+id/main_write_btn"/>
 
         </RelativeLayout>
