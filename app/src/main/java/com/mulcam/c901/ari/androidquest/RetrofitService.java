@@ -1,5 +1,7 @@
 package com.mulcam.c901.ari.androidquest;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.net.URLDecoder;
 
@@ -23,8 +25,10 @@ class RetrofitService {
     }
     public static RetrofitInterface getInstance()
     {
+        Log.d("RetrofitService", "getInstance");
         if(service == null)
         {
+            Log.d("RetrofitService", "service null");
             okhttp = setInterceptor();
             Retrofit client = new Retrofit.Builder().baseUrl("http://10.0.3.2:8080/Quest/")
                                     .addConverterFactory(GsonConverterFactory.create())
@@ -32,10 +36,12 @@ class RetrofitService {
                                     .build();
             service = client.create(RetrofitInterface.class);
         }
+        Log.d("RetrofitService", "service return");
         return service;
     }
     private static OkHttpClient setInterceptor()
         {
+            Log.d("RetrofitService", "OkHttpClient");
             OkHttpClient.Builder builder = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
                 @Override
                 public okhttp3.Response intercept(Chain chain) throws IOException {

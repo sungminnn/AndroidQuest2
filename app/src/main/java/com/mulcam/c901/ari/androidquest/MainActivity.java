@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * Created by Jin on 2017-06-14.
@@ -26,9 +25,11 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
     private Button todo_btn;
     private Button welldo_btn;
-    private ViewBoardFragement viewBoardFragement;
+    private int boardNo;
+
     private TodoBoardFragment todoBoard;
     private WelldoBoardFragment welldoBoard;
+    private ViewBoardFragement viewBoard;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,12 +62,13 @@ public class MainActivity extends AppCompatActivity
 
         todoBoard = new TodoBoardFragment();
         welldoBoard = new WelldoBoardFragment();
+        viewBoard = new ViewBoardFragement();
 
 
         todo_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
                 Log.i("main","해주세요게시판 in");
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.main_view, todoBoard).commit();
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         welldo_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, " 잘해요 게시판에 들어옴", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, " 잘해요 게시판에 들어옴", Toast.LENGTH_SHORT).show();
                 Log.i("main", "잘해요 게시판 in");
 
                 FragmentManager fm = getFragmentManager();
@@ -141,8 +143,9 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
-        public void setViewBoardFragement() {
-            viewBoardFragement.setView_main_lv();
-            Log.d("mainViewBoard","setViewBoardFragment");
+
+        public void setBoardNoforviewBoard(String boardNo) {
+            viewBoard.setBoard(boardNo);
+//            Log.d("mainViewBoard","boardNo"+boardNo);
         }
 }

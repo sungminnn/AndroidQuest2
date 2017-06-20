@@ -47,32 +47,168 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint=" [ 보 상 ] " />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:hint=" 보상 1"
+            android:id="@+id/viewboard_reword_1"/>
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="신청하기"
-            android:shadowColor="#CCFFCC"
-            android:id="@+id/viewboard_applyuser_btn"/>
-        <Button
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint=" 보상 2"
+            android:id="@+id/viewboard_reword_2"/>
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="즐겨찾기"
-            android:shadowColor="#CCFFCC"
-            android:id="@+id/viewboard_bookmark_btn"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="신고하기"
-            android:shadowColor="#CCFFCC"
-            android:id="@+id/viewboard_police_btn"/>
-
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint=" 보상 3"
+            android:id="@+id/viewboard_reword_3"/>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:hint=" [ 장 소 ] " />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint=" 여기서해"
+            android:id="@+id/viewboard_address"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:hint=" [ 필요인원 ] " />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint=" 000명"
+            android:id="@+id/viewboard_people"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:hint=" [ 연락방법 ] " />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint="폰번"
+            android:id="@+id/viewboard_contact"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:ellipsize="marquee"
+            android:textSize="30sp"
+            android:hint="010-1111-1111"
+            android:id="@+id/viewboard_contact_answer"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint=" [ 내 용 ] " />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:textSize="30sp"
+        android:hint="냉무냉무"
+        android:id="@+id/viewboard_content"/>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="신청하기"
+                android:shadowColor="#CCFFCC"
+                android:id="@+id/viewboard_applyuser_btn"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="즐겨찾기"
+                android:shadowColor="#CCFFCC"
+                android:id="@+id/viewboard_bookmark_btn"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="신고하기"
+                android:shadowColor="#CCFFCC"
+                android:id="@+id/viewboard_police_btn"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
