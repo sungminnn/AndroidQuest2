@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.internal.LinkedTreeMap;
@@ -33,6 +34,7 @@ public class TodoBoardFragment extends Fragment {
     private ListView main_lv;
     private View view;
     private ViewBoardFragement viewBoard;
+    private EditText boardNo_edt;
 
 
     @Override
@@ -41,11 +43,14 @@ public class TodoBoardFragment extends Fragment {
         main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                parent.getItemAtPosition(position);
-                ((HashMap<String, Object>)parent.getItemAtPosition(position)).get("boardNo");
-//                --> 보내서 그받은걸 viewBoard양식에 맞춘다음 main_list? 거기에 프레그먼트 매니저를통해서 replace
-//                Toast.makeText(getActivity(), "아이템 클릭", Toast.LENGTH_SHORT).show();
                 Log.d("todoFrag", "리스트뷰 클릭클릭");
+                Log.d("todoFrag", String.valueOf(position));
+                Log.d("todoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
+
+                String boardNo = String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo"));
+
+                getBoardNo(boardNo);
+
             }
         });
     }
@@ -55,12 +60,8 @@ public class TodoBoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.boardlistview, container, false);
         main_lv = (ListView) view.findViewById(R.id.main_lv);
+        boardNo_edt = (EditText) view.findViewById(R.id.board_boardNo);
         setList();
-
-//        viewBoard = new ViewBoardFragement();
-//        Log.i("todoFrag", "플래그 생성");
-
-
 
         return view;
     }
@@ -109,4 +110,10 @@ public class TodoBoardFragment extends Fragment {
             }
         }.execute();
     }
+
+        public void getBoardNo(String boardNo){
+            ((MainActivity)getActivity()).setBoardNoforviewBoard(boardNo);
+    }
+
+
 }
