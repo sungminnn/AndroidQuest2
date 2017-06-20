@@ -52,6 +52,12 @@
                 android:layout_marginRight="20dp"
                 android:src="@drawable/sign_in"
                 android:id="@+id/main_login_btn"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/pencil"
+                android:id="@+id/main_write_btn"/>
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
