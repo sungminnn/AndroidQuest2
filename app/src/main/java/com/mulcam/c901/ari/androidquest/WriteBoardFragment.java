@@ -28,4 +28,7 @@ public class WriteBoardFragment extends Fragment {
         return view;
 
     }
+
+
+    //dsfsdf
 }
