@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textColor="#000000">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="15sp"
+        android:text="[제목]"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:maxLines="1"
         android:ellipsize="marquee"
+
         android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
         android:id="@+id/viewboard_title"/>
     <LinearLayout
@@ -21,20 +29,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint="2017.00.00"
             android:inputType="date"
             android:id="@+id/viewboard_writedate"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint=" | 조회수 "
             android:id="@+id/viewboard_read"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint="00"
             android:id="@+id/viewboard_readcount"/>
     </LinearLayout>
@@ -45,7 +53,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:hint=" [ 보 상 ] " />
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +64,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:layout_weight="1"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint=" 보상 1"
             android:id="@+id/viewboard_reword_1"/>
         <TextView
@@ -64,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ellipsize="marquee"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint=" 보상 2"
             android:id="@+id/viewboard_reword_2"/>
         <TextView
@@ -72,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ellipsize="marquee"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint=" 보상 3"
             android:id="@+id/viewboard_reword_3"/>
     </LinearLayout>
@@ -90,14 +98,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint=" [ 장 소 ] " />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:ellipsize="marquee"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint=" 여기서해"
             android:id="@+id/viewboard_address"/>
 
@@ -110,14 +118,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:hint=" [ 필요인원 ] " />
+            android:textSize="15sp"
+            android:hint=" [필요인원] " />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:ellipsize="marquee"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint=" 000명"
             android:id="@+id/viewboard_people"/>
 
@@ -130,24 +138,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:hint=" [ 연락방법 ] " />
+            android:textSize="15sp"
+            android:hint=" [연락방법] " />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ellipsize="marquee"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:hint="폰번"
             android:id="@+id/viewboard_contact"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:ellipsize="marquee"
-            android:textSize="30sp"
-            android:hint="010-1111-1111"
-            android:id="@+id/viewboard_contact_answer"/>
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="3"-->
+            <!--android:ellipsize="marquee"-->
+            <!--android:textSize="20sp"-->
+            <!--android:hint="010-1111-1111"-->
+            <!--android:id="@+id/viewboard_contact_answer"/>-->
 
     </LinearLayout>
     <View
@@ -157,13 +165,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:hint=" [ 내 용 ] " />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:hint="냉무냉무"
         android:id="@+id/viewboard_content"/>
 

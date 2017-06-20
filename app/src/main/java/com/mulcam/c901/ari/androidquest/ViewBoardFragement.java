@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.OkHttpClient;
@@ -36,12 +39,19 @@ public class ViewBoardFragement extends Fragment {
     private TextView title;
     private TextView writedate;
     private TextView readcount;
+    private TextView reword1;
+    private TextView reword2;
+    private TextView reword3;
     private TextView content;
     private TextView people;
     private TextView contact;
     private TextView address;
     private  Map<String, Object> boardList;
     private Map<String, Object> addrList;
+    private int boardNo ;
+    private String selectReward;
+    private String contactAnswer;
+    private String content_edt;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -53,7 +63,41 @@ public class ViewBoardFragement extends Fragment {
                 view = ((MainActivity)getActivity()).getLayoutInflater().inflate(R.layout.dialog_applyuser,null);
 
                 TextView boardNo_edit = (TextView) view.findViewById(R.id.apply_boardNo_edit);
-                boardNo_edit.setText(String.format("%.0f",boardList.get("boardNo")));
+                TextView contact_edit = (TextView) view.findViewById(R.id.apply_contact_edit);
+                TextView content_edit = (TextView) view.findViewById(R.id.apply_content_edit);
+
+
+
+                boardNo_edit.setText(String.format("%.0f",boardList.get("boardNo"))+"번");
+                boardNo = Integer.parseInt(String.format("%.0f",boardList.get("boardNo")));
+                RadioGroup reward_rg = (RadioGroup) view.findViewById(R.id.apply_reward_rg);
+
+                RadioButton reward1 = new RadioButton((MainActivity)getActivity());
+                reward1.setText(String.valueOf(boardList.get("reward1")));
+                reward1.setLayoutParams
+                        (new RadioGroup.LayoutParams
+                                (RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT));
+                reward_rg.addView(reward1);
+
+                if(!((String)boardList.get("reward2")).equals("")){
+                    RadioButton reward2 = new RadioButton((MainActivity)getActivity());
+                    reward2.setText(String.valueOf(boardList.get("reward2")));
+                    reward2.setLayoutParams
+                            (new RadioGroup.LayoutParams
+                                    (RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT));
+                    reward_rg.addView(reward2);
+                }
+
+                if(!((String)boardList.get("reward3")).equals("")){
+                    RadioButton reward3 = new RadioButton((MainActivity)getActivity());
+                    reward3.setText(String.valueOf(boardList.get("reward3")));
+                    reward3.setLayoutParams
+                            (new RadioGroup.LayoutParams
+                                    (RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT));
+                    reward_rg.addView(reward3);
+                }
+//                reward_rg.getCheckedRadioButtonId()
+
 
                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
                         .setView(view)
@@ -71,6 +115,45 @@ public class ViewBoardFragement extends Fragment {
                 btn_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d("viewBoard","신청하기 클릭");
+                        new AsyncTask<Nullable, Nullable, Nullable>()
+                        {
+
+                            @Override
+                            protected void onPreExecute() {
+                                super.onPreExecute();
+                            }
+
+                            @Override
+                            protected void onPostExecute(Nullable nullable) {
+                                super.onPostExecute(nullable);
+                            }
+                            @Override
+                            protected void onProgressUpdate(Nullable... values) {
+                                super.onProgressUpdate(values);
+                            }
+
+                            @Override
+                            protected Nullable doInBackground(Nullable... params) {
+                                RetrofitInterface service = RetrofitService.getInstance();
+                                Call<HashMap<String, Object>> call = service.applyProc();
+                                call.enqueue(new Callback<HashMap<String,Object>>() {
+                                    @Override
+                                    public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
+                                        Map<String, Object> hash = response.body();
+                                        Map<String, Object> hash2 = (Map<String, Object>)hash.get("list1");
+                                        List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
+                                        Log.d("todo",String.valueOf(hash3));
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<HashMap<String, Object>> call, Throwable t) {
+
+                                    }
+                                });
+                                return null;
+                            }
+                        }.execute();
 
                     }
                 });
@@ -119,6 +202,9 @@ public class ViewBoardFragement extends Fragment {
         contact = (TextView) view.findViewById(R.id.viewboard_contact);
         address = (TextView) view.findViewById(R.id.viewboard_address);
         content = (TextView) view.findViewById(R.id.viewboard_content);
+        reword1 = (TextView) view.findViewById(R.id.viewboard_reword_1);
+        reword2 = (TextView) view.findViewById(R.id.viewboard_reword_2);
+        reword3 = (TextView) view.findViewById(R.id.viewboard_reword_3);
 
 
         return view;
@@ -166,6 +252,14 @@ public class ViewBoardFragement extends Fragment {
 
                 address.setText(String.valueOf(addrList.get("sido")+" " + addrList.get("gungu")));
                 content.setText(String.valueOf(boardList.get("content")));
+
+                reword1.setText(String.valueOf(boardList.get("reward1")));
+                if(!((String)boardList.get("reward2")).equals("")){
+                    reword2.setText(String.valueOf(boardList.get("reward2")));
+                }
+                if(!((String)boardList.get("reward3")).equals("")){
+                    reword3.setText(String.valueOf(boardList.get("reward3")));
+                }
 
 
 

@@ -7,11 +7,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/apply_title"
         android:text=" 신 청 하 기 "
-        android:textSize="50sp"
+        android:textSize="35sp"
         android:layout_gravity="center_horizontal"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"/>
+        android:layout_height="2dp"
+        android:background="#666666"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,14 +55,13 @@
             android:layout_gravity="center"
             android:id="@+id/apply_reward"
             />
-        <TextView
-            android:layout_width="0dp"
+
+        <RadioGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:id="@+id/apply_reward_edit"
-            />
+            android:id="@+id/apply_reward_rg">
+
+        </RadioGroup>
 
     </LinearLayout>
     <LinearLayout
@@ -90,9 +90,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:gravity="center"
-            android:hint="연락처를 입력하세요"
+            android:hint="연락처 입력"
             android:id="@+id/apply_contact_edit"
             />
 
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:textSize="24sp"
             android:gravity="center"
-            android:text="연락방법"
+            android:text="내용"
             android:layout_gravity="center"
             android:id="@+id/apply_content"
             />
@@ -120,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:hint="내용을 입력하세요"
             android:id="@+id/apply_content_edit"

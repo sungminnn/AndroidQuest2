@@ -14,9 +14,12 @@ public interface RetrofitInterface {
         @PUT("m_getBoard.do")
         Call<HashMap<String, Object>> getBoard(@Query("boardNo") int boardNo);
 
-
         @PUT("m_android.do")
         Call<HashMap<String, Object>> repo();
+
+        @PUT("m_applyPopupProc.do")
+        Call<HashMap<String, Object>> applyProc();
+
 //        @PUT("m_session.do")
 //        Call<HashMap<String, Object>> session();
 
