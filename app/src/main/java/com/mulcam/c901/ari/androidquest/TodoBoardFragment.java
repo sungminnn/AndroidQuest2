@@ -13,8 +13,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.google.gson.internal.LinkedTreeMap;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,17 +39,17 @@ public class TodoBoardFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("todoFrag", "리스트뷰 클릭클릭");
-                Log.d("todoFrag", String.valueOf(position));
-                Log.d("todoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.d("todoFrag", "리스트뷰 클릭클릭");
+                    Log.d("todoFrag", String.valueOf(position));
+                    Log.d("todoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
 
-                String boardNo = String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo"));
+                    String boardNo = String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo"));
 
-                getBoardNo(boardNo);
+                    getBoardNo(boardNo);
 
-            }
+                }
         });
     }
 
@@ -95,7 +93,7 @@ public class TodoBoardFragment extends Fragment {
                     @Override
                     public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
                         Map<String, Object> hash = response.body();
-                        Map<String, Object> hash2 = (LinkedTreeMap<String, Object>)hash.get("list1");
+                        Map<String, Object> hash2 = (Map<String, Object>)hash.get("list1");
                         List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
                         Log.d("todo",String.valueOf(hash3));
                         adapter.addAll(hash3);

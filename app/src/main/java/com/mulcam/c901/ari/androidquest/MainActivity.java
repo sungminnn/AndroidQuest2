@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity
     private WelldoBoardFragment welldoBoard;
     private ViewBoardFragement viewBoard;
     private WriteBoardFragment writeboard;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +162,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         public void setBoardNoforviewBoard(String boardNo) {
+            FragmentManager fm = getFragmentManager();
+            fm.beginTransaction().replace(R.id.main_view, viewBoard).commit();
             viewBoard.setBoard(boardNo);
 //            Log.d("mainViewBoard","boardNo"+boardNo);
         }

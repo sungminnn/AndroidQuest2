@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -38,6 +39,23 @@ public class ViewBoardFragement extends Fragment {
     private TextView people;
     private TextView contact;
     private TextView address;
+    private  Map<String, Object> boardList;
+    private Map<String, Object> addrList;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        //신청하기
+        applyuser_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +93,7 @@ public class ViewBoardFragement extends Fragment {
 
         new AsyncTask<Nullable, Nullable, Nullable>()
         {
+
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -83,10 +102,34 @@ public class ViewBoardFragement extends Fragment {
             @Override
             protected void onPostExecute(Nullable nullable) {
                 super.onPostExecute(nullable);
+
             }
             @Override
             protected void onProgressUpdate(Nullable... values) {
                 super.onProgressUpdate(values);
+                Log.d("viewBoard"," onResponse title "+String.valueOf(boardList.get("title")));
+                Log.d("viewBoard"," onResponse readcount "+String.valueOf(boardList.get("readCount")));
+                readcount.setText(String.format("%.0f",boardList.get("readCount")) );
+                people.setText(String.format("%.0f",boardList.get("people")));
+
+                title.setText(String.valueOf(boardList.get("title")));
+                writedate.setText(String.valueOf(boardList.get("date")));
+
+                if( (String.valueOf( boardList.get("contactNo")).equals("1"))){
+                    contact.setText("Kakao");
+                }
+                else if((String.valueOf( boardList.get("contactNo")).equals("2"))){
+                    contact.setText("email");
+                }
+                else if( (String.valueOf( boardList.get("contactNo")).equals("3"))){
+                    contact.setText("HP");
+                }
+
+                address.setText(String.valueOf(addrList.get("sido")+" " + addrList.get("gungu")));
+                content.setText(String.valueOf(boardList.get("content")));
+
+
+
             }
 
             @Override
@@ -97,27 +140,17 @@ public class ViewBoardFragement extends Fragment {
                 call.enqueue(new Callback<HashMap<String,Object>>() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
-                        HashMap<String, Object> board = response.body();
-                        Log.d("viewBoard"," onResponse board "+String.valueOf(board));
-
-                        title.setText((String)board.get("title"));
-                        writedate.setText((String)board.get("date"));
-                        readcount.setText((String)board.get("readCount"));
-                        people.setText((String)board.get("people"));
-                        if( ((String) board.get("contactNo")).equals("1")){
-                            contact.setText("Kakao");
-                        }
-                        else if( ((String) board.get("contactNo")).equals("2")){
-                            contact.setText("email");
-                        }
-                        else if( ((String) board.get("contactNo")).equals("3")){
-                            contact.setText("HP");
-                        }
-
-                        address.setText((String)board.get("title"));
-                        content.setText((String)board.get("content"));
+                        HashMap<String, Object> data = response.body();
 
 
+                        boardList = (Map<String, Object>)data.get("boardList");
+                        addrList = (Map<String, Object>)data.get("addrList");
+
+                        Log.d("viewBoard"," onResponse board "+String.valueOf(boardList));
+                        Log.d("viewBoard"," onResponse addr "+String.valueOf(addrList));
+
+//
+                        publishProgress();
 
                     }
 

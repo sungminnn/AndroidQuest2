@@ -6,12 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="뷰 보 드 "/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:maxLines="1"
         android:ellipsize="marquee"
         android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
