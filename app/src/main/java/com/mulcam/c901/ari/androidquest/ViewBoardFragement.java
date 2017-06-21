@@ -9,15 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +42,7 @@ public class ViewBoardFragement extends Fragment {
     private TextView reword1;
     private TextView reword2;
     private TextView reword3;
-    private TextView content;
+    private TextView view_content;
     private TextView people;
     private TextView contact;
     private TextView address;
@@ -55,7 +51,7 @@ public class ViewBoardFragement extends Fragment {
     private int boardNo ;
     private String selectReward;
     private String contactAnswer;
-    private String content_edt;
+    private String apply_content;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -68,12 +64,13 @@ public class ViewBoardFragement extends Fragment {
 
                 TextView boardNo_edit = (TextView) view.findViewById(R.id.apply_boardNo_edit);
                 TextView contact_edit = (TextView) view.findViewById(R.id.apply_contact_edit);
+                TextView contactNo = (TextView) view.findViewById(R.id.apply_contactNo);
                 TextView content_edit = (TextView) view.findViewById(R.id.apply_content_edit);
 
-
-
+                //글번호
                 boardNo_edit.setText(String.format("%.0f",boardList.get("boardNo"))+"번");
-                boardNo = Integer.parseInt(String.format("%.0f",boardList.get("boardNo")));
+
+                //보상
                 RadioGroup reward_rg = (RadioGroup) view.findViewById(R.id.apply_reward_rg);
 
                 RadioButton reward1 = new RadioButton((MainActivity)getActivity());
@@ -101,11 +98,30 @@ public class ViewBoardFragement extends Fragment {
                     reward_rg.addView(reward3);
                 }
 
+                //연락방법 넣기
+                if( (String.valueOf( boardList.get("contactNo")).equals("1.0"))){
+                    contactNo.setText("Kakao");
+                }
+                else if((String.valueOf( boardList.get("contactNo")).equals("2.0"))){
+                    contactNo.setText("email");
+                }
+                else if( (String.valueOf( boardList.get("contactNo")).equals("3.0"))){
+                    contactNo.setText("HP");
+                }
+
+                // 넘겨줄 보드노
+                boardNo = Integer.parseInt(String.format("%.0f",boardList.get("boardNo")));
+                // 선택된 보상 가져오기
                 Log.d("viewBoard_radio", String.valueOf(reward_rg.getCheckedRadioButtonId() ));
 
 //                switch (reward_rg.getCheckedRadioButtonId()){
 //                    case
 //                }
+                //넘겨줄 연락처
+                contactAnswer = contact_edit.getText().toString();
+
+                //넘겨줄 내용
+                apply_content = content_edit.getText().toString();
 
 
                 final AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -114,6 +130,7 @@ public class ViewBoardFragement extends Fragment {
                 dialog.show();
                 Button btn_cancel = (Button) view.findViewById(R.id.apply_btn_cancel);
                 Button btn_ok = (Button) view.findViewById(R.id.apply_btn_ok);
+
                 //신청하기 취소
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -210,7 +227,7 @@ public class ViewBoardFragement extends Fragment {
         people = (TextView) view.findViewById(R.id.viewboard_people);
         contact = (TextView) view.findViewById(R.id.viewboard_contact);
         address = (TextView) view.findViewById(R.id.viewboard_address);
-        content = (TextView) view.findViewById(R.id.viewboard_content);
+        view_content = (TextView) view.findViewById(R.id.viewboard_content);
         reword1 = (TextView) view.findViewById(R.id.viewboard_reword_1);
         reword2 = (TextView) view.findViewById(R.id.viewboard_reword_2);
         reword3 = (TextView) view.findViewById(R.id.viewboard_reword_3);
@@ -249,18 +266,18 @@ public class ViewBoardFragement extends Fragment {
                 title.setText(String.valueOf(boardList.get("title")));
                 writedate.setText(String.valueOf(boardList.get("date")));
 
-                if( (String.valueOf( boardList.get("contactNo")).equals("1"))){
+                if( (String.valueOf( boardList.get("contactNo")).equals("1.0"))){
                     contact.setText("Kakao");
                 }
-                else if((String.valueOf( boardList.get("contactNo")).equals("2"))){
+                else if((String.valueOf( boardList.get("contactNo")).equals("2.0"))){
                     contact.setText("email");
                 }
-                else if( (String.valueOf( boardList.get("contactNo")).equals("3"))){
+                else if( (String.valueOf( boardList.get("contactNo")).equals("3.0"))){
                     contact.setText("HP");
                 }
 
                 address.setText(String.valueOf(addrList.get("sido")+" " + addrList.get("gungu")));
-                content.setText(String.valueOf(boardList.get("content")));
+                view_content.setText(String.valueOf(boardList.get("content")));
 
                 reword1.setText(String.valueOf(boardList.get("reward1")));
                 if(!((String)boardList.get("reward2")).equals("")){
@@ -307,97 +324,6 @@ public class ViewBoardFragement extends Fragment {
     }.execute();
     }
 
-    /**
-     * Created by student on 2017-06-16.
-     */
 
-    public static class TodoBoardFragment extends Fragment {
-        private BoardAdapter adapter;
-        private ListView main_lv;
-        private View view;
-        private ViewBoardFragement viewBoard;
-        private EditText boardNo_edt;
-
-
-        @Override
-        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Log.d("todoFrag", "리스트뷰 클릭클릭");
-                        Log.d("todoFrag", String.valueOf(position));
-                        Log.d("todoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
-
-                        String boardNo = String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo"));
-
-                        getBoardNo(boardNo);
-
-                    }
-            });
-        }
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-            view = inflater.inflate(R.layout.boardlistview, container, false);
-            main_lv = (ListView) view.findViewById(R.id.main_lv);
-            boardNo_edt = (EditText) view.findViewById(R.id.board_boardNo);
-            setList();
-
-            return view;
-        }
-
-        private void setList()
-        {
-            adapter = new BoardAdapter(getActivity(), R.layout.list_board, new ArrayList<Map<String, Object> >());
-            main_lv.setAdapter(adapter);
-            new AsyncTask<Nullable, Nullable, Nullable>()
-            {
-
-                @Override
-                protected void onPreExecute() {
-                    super.onPreExecute();
-                }
-
-                @Override
-                protected void onPostExecute(Nullable nullable) {
-                    super.onPostExecute(nullable);
-                }
-                @Override
-                protected void onProgressUpdate(Nullable... values) {
-                    super.onProgressUpdate(values);
-                }
-
-                @Override
-                protected Nullable doInBackground(Nullable... params) {
-                    RetrofitInterface service = RetrofitService.getInstance();
-                    Call<HashMap<String, Object>> call = service.repo();
-                    call.enqueue(new Callback<HashMap<String,Object>>() {
-                        @Override
-                        public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
-                            Map<String, Object> hash = response.body();
-                            Map<String, Object> hash2 = (Map<String, Object>)hash.get("list1");
-                            List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
-                            Log.d("todo",String.valueOf(hash3));
-                            adapter.addAll(hash3);
-                        }
-
-                        @Override
-                        public void onFailure(Call<HashMap<String, Object>> call, Throwable t) {
-
-                        }
-                    });
-                    return null;
-                }
-            }.execute();
-        }
-
-            public void getBoardNo(String boardNo){
-                ((MainActivity)getActivity()).setBoardNoforviewBoard(boardNo);
-        }
-
-
-    }
 }
 

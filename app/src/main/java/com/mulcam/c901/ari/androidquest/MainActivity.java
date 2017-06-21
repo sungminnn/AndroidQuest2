@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity
     private Button todo_btn;
     private Button welldo_btn;
     private ImageView write_btn;
+    private ImageView login_btn;
     private int boardNo;
 
 
-    private ViewBoardFragement.TodoBoardFragment todoBoard;
+    private TodoBoardFragment todoBoard;
     private WelldoBoardFragment welldoBoard;
     private ViewBoardFragement viewBoard;
     private WriteBoardFragment writeboard;
+    private LoginFragment loginPage;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -73,11 +75,15 @@ public class MainActivity extends AppCompatActivity
         todo_btn = (Button) findViewById(R.id.main_todo_btn);
         welldo_btn = (Button) findViewById(R.id.main_welldo_btn);
         write_btn = (ImageView) findViewById(R.id.main_write_btn);
+        login_btn = (ImageView) findViewById(R.id.main_login_btn);
 
-        todoBoard = new ViewBoardFragement.TodoBoardFragment();
+
+
+        todoBoard = new TodoBoardFragment();
         welldoBoard = new WelldoBoardFragment();
         viewBoard = new ViewBoardFragement();
         writeboard = new WriteBoardFragment();
+        loginPage = new LoginFragment();
 
 
 
@@ -86,6 +92,13 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, "해주세요 게시판에 들어오셨습니다", Toast.LENGTH_SHORT).show();
                 Log.i("main","해주세요게시판 in");
+                todo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_success)
+                );
+                welldo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_thema)
+                );
+
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.main_view, todoBoard).commit();
             }
@@ -96,7 +109,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this, " 잘해요 게시판에 들어옴", Toast.LENGTH_SHORT).show();
                 Log.i("main", "잘해요 게시판 in");
-
+                todo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_thema)
+                );
+                welldo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_success)
+                );
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.main_view, welldoBoard).commit();
             }
@@ -107,6 +125,14 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.main_view, writeboard).commit();
+            }
+        });
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.main_view, loginPage).commit();
             }
         });
 
@@ -127,6 +153,7 @@ public class MainActivity extends AppCompatActivity
         public boolean onCreateOptionsMenu(Menu menu) {
                     // Inflate the menu; this adds items to the action bar if it is present.
                     getMenuInflater().inflate(R.menu.main, menu);
+
                     return true;
         }
 
@@ -136,6 +163,7 @@ public class MainActivity extends AppCompatActivity
             // automatically handle clicks on the Home/Up button, so long
             // as you specify a parent activity in AndroidManifest.xml.
             int id = item.getItemId();
+
 
             //noinspection SimplifiableIfStatement
             if (id == R.id.action_settings) {

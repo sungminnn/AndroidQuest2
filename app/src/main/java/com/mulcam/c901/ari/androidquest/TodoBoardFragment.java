@@ -1,6 +1,5 @@
 package com.mulcam.c901.ari.androidquest;
 
-
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
-
-import com.google.gson.internal.LinkedTreeMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,10 +25,12 @@ import retrofit2.Response;
  * Created by student on 2017-06-16.
  */
 
-public class WelldoBoardFragment extends Fragment {
+public class TodoBoardFragment extends Fragment {
     private BoardAdapter adapter;
     private ListView main_lv;
     private View view;
+    private ViewBoardFragement viewBoard;
+    private EditText boardNo_edt;
 
 
     @Override
@@ -39,9 +39,9 @@ public class WelldoBoardFragment extends Fragment {
         main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("welldoFrag", "리스트뷰 클릭클릭");
-                Log.d("welldoFrag", String.valueOf(position));
-                Log.d("welldoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
+                Log.d("todoFrag", "리스트뷰 클릭클릭");
+                Log.d("todoFrag", String.valueOf(position));
+                Log.d("todoFrag", "boardNo " + String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo") ));
 
                 String boardNo = String.format("%.0f", (double)((Map<String, Object>)parent.getItemAtPosition(position)).get("boardNo"));
 
@@ -54,10 +54,9 @@ public class WelldoBoardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
-
         view = inflater.inflate(R.layout.boardlistview, container, false);
-        main_lv = (ListView)view.findViewById(R.id.main_lv);
+        main_lv = (ListView) view.findViewById(R.id.main_lv);
+        boardNo_edt = (EditText) view.findViewById(R.id.board_boardNo);
         setList();
 
         return view;
@@ -67,7 +66,6 @@ public class WelldoBoardFragment extends Fragment {
     {
         adapter = new BoardAdapter(getActivity(), R.layout.list_board, new ArrayList<Map<String, Object> >());
         main_lv.setAdapter(adapter);
-
         new AsyncTask<Nullable, Nullable, Nullable>()
         {
 
@@ -87,15 +85,15 @@ public class WelldoBoardFragment extends Fragment {
 
             @Override
             protected Nullable doInBackground(Nullable... params) {
-//                RetrofitInterface service = client.create(RetrofitInterface.class);
                 RetrofitInterface service = RetrofitService.getInstance();
                 Call<HashMap<String, Object>> call = service.repo();
                 call.enqueue(new Callback<HashMap<String,Object>>() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object>> call, Response<HashMap<String, Object>> response) {
                         Map<String, Object> hash = response.body();
-                        Map<String, Object> hash2 = (LinkedTreeMap<String, Object>)hash.get("list0");
+                        Map<String, Object> hash2 = (Map<String, Object>)hash.get("list1");
                         List<Map<String, Object>> hash3 = (List<Map<String, Object>>)hash2.get("boardList");
+                        Log.d("todo",String.valueOf(hash3));
                         adapter.addAll(hash3);
                     }
 
@@ -108,9 +106,10 @@ public class WelldoBoardFragment extends Fragment {
             }
         }.execute();
     }
+
     public void getBoardNo(String boardNo){
         ((MainActivity)getActivity()).setBoardNoforviewBoard(boardNo);
-        Log.d("welldoFrag", "boardNo send");
     }
+
 
 }

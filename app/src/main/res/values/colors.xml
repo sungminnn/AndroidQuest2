@@ -5,6 +5,15 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="bg_thema">#2C3E50</color>
+    <color name="bg_thema_50">#E62C3E50</color>
+    <color name="bg_success">#18BC9C</color>
+    <color name="bg_success_70">#A618BC9C</color>
+    <color name="bg_success_35">#5918BC9C</color>
+    <color name="cancel_btn">#999999</color>
+    <color name="cancel_btn_50">#80999999</color>
+    <!--<color name="bookmark_btn">#CCFFFF</color>-->
+    <!--<color name="bookmark_btn">#CCFFFF</color>-->
 
     <color name="apply_click_btn">#CCFF99</color>
     <color name="police_click_btn">#FF9966</color>
@@ -15,8 +24,8 @@
 
 
 
-    <!--<color name="bookmark_btn">#CCFFFF</color>-->
-    <!--<color name="bookmark_btn">#CCFFFF</color>-->
-    <!--<color name="bookmark_btn">#CCFFFF</color>-->
+
+
+
 
 </resources>

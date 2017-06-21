@@ -2,185 +2,209 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textColor="#000000">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="[ 제목 ]"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:maxLines="1"
-        android:ellipsize="marquee"
-
-        android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
-        android:id="@+id/viewboard_title"/>
+    >
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="right">
-
-
+        android:layout_margin="10dp"
+        android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:hint="2017.00.00"
-            android:inputType="date"
-            android:id="@+id/viewboard_writedate"/>
+            android:text="[ 제목 ]"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:maxLines="1"
+            android:ellipsize="marquee"
+            android:textColor="@color/black"
+            android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
+            android:id="@+id/viewboard_title"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint="작성자 "
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint="뉴규? |"
+                android:textColor="@color/black"
+                android:id="@+id/viewboard_writer_edt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint="2017.00.00"
+                android:inputType="datetime|date"
+                android:textColor="@color/black"
+                android:id="@+id/viewboard_writedate"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint=" | 조회수 "
+                android:id="@+id/viewboard_read"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint="00"
+                android:textColor="@color/black"
+                android:id="@+id/viewboard_readcount"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:hint=" | 조회수 "
-            android:id="@+id/viewboard_read"/>
+            android:hint=" [ 보 상 ] 택1"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:hint=" 보상 1"
+                android:background="@drawable/viewboard_reward"
+                android:id="@+id/viewboard_reword_1"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:background="@drawable/viewboard_reward"
+                android:hint="-"
+                android:id="@+id/viewboard_reword_2"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:background="@drawable/viewboard_reward"
+                android:hint="-"
+                android:id="@+id/viewboard_reword_3"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:hint=" [ 장 소 ] " />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ellipsize="marquee"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:hint=" 여기서해"
+                android:id="@+id/viewboard_address"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:hint=" [필요인원] " />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ellipsize="marquee"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:hint=" 000명"
+                android:id="@+id/viewboard_people"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:hint=" [연락방법] " />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ellipsize="marquee"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:hint="폰번"
+                android:id="@+id/viewboard_contact"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:hint="00"
-            android:id="@+id/viewboard_readcount"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:hint=" [ 보 상 ] "
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:layout_width="0dp"
+            android:hint=" [ 내 용 ] " />
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
-            android:layout_weight="1"
             android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:hint=" 보상 1"
-            android:background="@drawable/viewboard_reward"
-            android:id="@+id/viewboard_reword_1"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:background="@drawable/viewboard_reward"
-            android:hint=" 보상 2"
-            android:id="@+id/viewboard_reword_2"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:background="@drawable/viewboard_reward"
-            android:hint=" 보상 3"
-            android:id="@+id/viewboard_reword_3"/>
+            android:textColor="@color/black"
+            android:hint="냉무냉무"
+            android:id="@+id/viewboard_content"/>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:hint=" [ 장 소 ] " />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:ellipsize="marquee"
-            android:textSize="20sp"
-            android:hint=" 여기서해"
-            android:id="@+id/viewboard_address"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:hint=" [필요인원] " />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:ellipsize="marquee"
-            android:textSize="20sp"
-            android:hint=" 000명"
-            android:id="@+id/viewboard_people"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:hint=" [연락방법] " />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:textSize="20sp"
-            android:hint="폰번"
-            android:id="@+id/viewboard_contact"/>
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:hint=" [ 내 용 ] " />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="marquee"
-        android:textSize="20sp"
-        android:hint="냉무냉무"
-        android:id="@+id/viewboard_content"/>
 
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
