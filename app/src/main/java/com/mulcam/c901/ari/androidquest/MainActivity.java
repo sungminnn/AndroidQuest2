@@ -1,6 +1,7 @@
 package com.mulcam.c901.ari.androidquest;
 
 import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.tsengvn.typekit.TypekitContextWrapper;
+
 /**
  * Created by Jin on 2017-06-14.
  */
@@ -30,10 +33,15 @@ public class MainActivity extends AppCompatActivity
     private int boardNo;
 
 
-    private TodoBoardFragment todoBoard;
+    private ViewBoardFragement.TodoBoardFragment todoBoard;
     private WelldoBoardFragment welldoBoard;
     private ViewBoardFragement viewBoard;
     private WriteBoardFragment writeboard;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         welldo_btn = (Button) findViewById(R.id.main_welldo_btn);
         write_btn = (ImageView) findViewById(R.id.main_write_btn);
 
-        todoBoard = new TodoBoardFragment();
+        todoBoard = new ViewBoardFragement.TodoBoardFragment();
         welldoBoard = new WelldoBoardFragment();
         viewBoard = new ViewBoardFragement();
         writeboard = new WriteBoardFragment();

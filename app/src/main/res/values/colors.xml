@@ -3,4 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="apply_click_btn">#CCFF99</color>
+    <color name="police_click_btn">#FF9966</color>
+    <color name="bookmark_click_btn">#CCFFFF</color>
+    <color name="apply_btn">#80CCFF99</color>
+    <color name="police_btn">#80FF9966</color>
+    <color name="bookmark_btn">#80CCFFFF</color>
+
+
+
+    <!--<color name="bookmark_btn">#CCFFFF</color>-->
+    <!--<color name="bookmark_btn">#CCFFFF</color>-->
+    <!--<color name="bookmark_btn">#CCFFFF</color>-->
+
 </resources>

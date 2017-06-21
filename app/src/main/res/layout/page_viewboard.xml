@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="[제목]"/>
+        android:text="[ 제목 ]"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,33 +54,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:hint=" [ 보 상 ] " />
+        android:hint=" [ 보 상 ] "
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        android:orientation="horizontal"
+        >
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:layout_margin="10dp"
             android:hint=" 보상 1"
+            android:background="@drawable/viewboard_reward"
             android:id="@+id/viewboard_reword_1"/>
-        <TextView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ellipsize="marquee"
             android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:background="@drawable/viewboard_reward"
             android:hint=" 보상 2"
             android:id="@+id/viewboard_reword_2"/>
-        <TextView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ellipsize="marquee"
             android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:background="@drawable/viewboard_reward"
             android:hint=" 보상 3"
             android:id="@+id/viewboard_reword_3"/>
     </LinearLayout>
@@ -148,14 +156,6 @@
             android:textSize="20sp"
             android:hint="폰번"
             android:id="@+id/viewboard_contact"/>
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="3"-->
-            <!--android:ellipsize="marquee"-->
-            <!--android:textSize="20sp"-->
-            <!--android:hint="010-1111-1111"-->
-            <!--android:id="@+id/viewboard_contact_answer"/>-->
 
     </LinearLayout>
     <View
@@ -194,21 +194,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="신청하기"
-                android:shadowColor="#CCFFCC"
+                android:background="@drawable/viewboard_apply_btn"
                 android:id="@+id/viewboard_applyuser_btn"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="즐겨찾기"
-                android:shadowColor="#CCFFCC"
+                android:background="@drawable/viewboard_bookmark_btn"
                 android:id="@+id/viewboard_bookmark_btn"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="신고하기"
-                android:shadowColor="#CCFFCC"
+                android:background="@drawable/viewboard_police_btn"
                 android:id="@+id/viewboard_police_btn"/>
 
         </LinearLayout>

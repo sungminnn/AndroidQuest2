@@ -2,15 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="blocksDescendants">
-
+    android:descendantFocusability="blocksDescendants"
+    android:textColor="@color/black"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:maxLines="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+
         android:ellipsize="marquee"
+        android:textColor="@color/black"
         android:hint="제목자리제목자리제목자리제목자리제목자리제목자리제목자리제목자리"
         android:id="@+id/board_title"/>
 
@@ -19,6 +26,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="right"
+        android:textColor="@color/black"
+        android:layout_marginRight="20dp"
         android:textSize="15sp">
         <TextView
             android:layout_width="wrap_content"
