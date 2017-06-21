@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_todolist"
-            android:icon="@drawable/icon_list"
+            android:icon="@drawable/icon_list2"
             android:title="해주세요" />
         <item
             android:id="@+id/nav_welldolist"
-            android:icon="@drawable/icon_list"
+            android:icon="@drawable/icon_list2"
             android:title="잘해요" />
 
     </group>
