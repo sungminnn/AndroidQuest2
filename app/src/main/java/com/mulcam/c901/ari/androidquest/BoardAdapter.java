@@ -37,14 +37,14 @@ public class BoardAdapter extends ArrayAdapter<Map<String, Object>> {
     private Context context;
     private int resId;
     private List<Map<String, Object>> list  = null;
-//    public BoardAdapter(Context context, int resId, List<Map<String, Object>> list)
+//    public BoardAdapter(Context context, int resId, List<Map<String, Object>> icon_list)
 //    {
 //        this.context = context;
 //        this.resId = resId;
-//        if(list == null)
-//            this.list = new ArrayList<>();
+//        if(icon_list == null)
+//            this.icon_list = new ArrayList<>();
 //        else
-//            this.list = list;
+//            this.icon_list = icon_list;
 //
 //    }
     public void setList(List<Map<String, Object>> list)

@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public void onBackPressed() {
+            Log.d("main_nav","onBackPressed");
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
@@ -151,6 +152,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
+            Log.d("main_nav","onCreateOptionsMenu");
                     // Inflate the menu; this adds items to the action bar if it is present.
                     getMenuInflater().inflate(R.menu.main, menu);
 
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
+            Log.d("main_nav","options in");
             // Handle action bar item clicks here. The action bar will
             // automatically handle clicks on the Home/Up button, so long
             // as you specify a parent activity in AndroidManifest.xml.
@@ -176,22 +179,50 @@ public class MainActivity extends AppCompatActivity
         @SuppressWarnings("StatementWithEmptyBody")
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
+            Log.d("main_nav","navigation in");
             // Handle navigation view item clicks here.
             int id = item.getItemId();
 
-            if (id == R.id.nav_camera) {
-                // Handle the camera action
-            } else if (id == R.id.nav_gallery) {
+            if (id == R.id.nav_todolist) {
+                Log.d("main_nav","해주세요");
+                welldo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_thema)
+                );
+                todo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_success)
+                );
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.main_view, todoBoard).commit();
 
-            } else if (id == R.id.nav_slideshow) {
+            } else if (id == R.id.nav_welldolist) {
+                Log.d("main_nav","잘해요");
+                todo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_thema)
+                );
+                welldo_btn.setBackgroundColor(
+                        getResources().getColor(R.color.bg_success)
+                );
 
-            } else if (id == R.id.nav_manage) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.main_view, welldoBoard).commit();
 
-            } else if (id == R.id.nav_share) {
+            } else if (id == R.id.nav_mylist_write) {
+                Log.d("main_nav","내가쓴글");
 
-            } else if (id == R.id.nav_send) {
+            } else if (id == R.id.nav_mylist_apply) {
+                Log.d("main_nav","신청한글");
+
+            } else if (id == R.id.nav_starpoint) {
+                Log.d("main_nav","평가하기");
+
+            } else if (id == R.id.nav_bookmark) {
+                Log.d("main_nav","즐겨찾기");
+
+            }else if (id == R.id.nav_profile) {
+                Log.d("main_nav","정보수정");
 
             }
+
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             return true;

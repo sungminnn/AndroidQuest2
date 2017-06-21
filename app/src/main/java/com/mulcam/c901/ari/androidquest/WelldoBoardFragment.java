@@ -36,6 +36,7 @@ public class WelldoBoardFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         main_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -109,8 +110,9 @@ public class WelldoBoardFragment extends Fragment {
         }.execute();
     }
     public void getBoardNo(String boardNo){
-        ((MainActivity)getActivity()).setBoardNoforviewBoard(boardNo);
         Log.d("welldoFrag", "boardNo send");
+        ((MainActivity)getActivity()).setBoardNoforviewBoard(boardNo);
+
     }
 
 }

@@ -3,33 +3,39 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_todolist"
+            android:icon="@drawable/icon_list"
+            android:title="해주세요" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_welldolist"
+            android:icon="@drawable/icon_list"
+            android:title="잘해요" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="MyPage">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_mylist_write"
+                android:icon="@drawable/icon_mylist"
+                android:title="게시한글" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_mylist_apply"
+                android:icon="@drawable/icon_mylist"
+                android:title="신청한글" />
+            <item
+                android:id="@+id/nav_starpoint"
+                android:icon="@drawable/icon_starpoint"
+                android:title="평가하기" />
+            <item
+                android:id="@+id/nav_bookmark"
+                android:icon="@drawable/icon_bookmark"
+                android:title="즐겨찾기" />
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/icion_profile"
+                android:title="정보수정" />
+
         </menu>
     </item>
 

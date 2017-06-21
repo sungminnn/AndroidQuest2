@@ -57,7 +57,7 @@
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/sign_in"
+                android:src="@drawable/pencil"
                 android:id="@+id/main_write_btn"/>
 
         </RelativeLayout>
