@@ -20,6 +20,11 @@ public interface RetrofitInterface {
         @PUT("m_applyPopupProc.do")
         Call<HashMap<String, Object>> applyProc();
 
+        @PUT("m_login_id.do")
+        Call<HashMap<String, Object>> login_id(@Query("id") String id);
+
+        @PUT("m_login.do")
+        Call<HashMap<String, Object>> login(@Query("id") String id, @Query("pw") String pw);
 //        @PUT("m_session.do")
 //        Call<HashMap<String, Object>> session();
 
